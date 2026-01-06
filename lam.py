@@ -7,8 +7,10 @@ data = {
     "scoreIndo":[70, 75, 72, 84, 50]
 }
 df = pd.DataFrame(data)
-df["averageScore"] = df[["scoreEnglish", "scoreMath", "scoreIndo"]].sum(axis="columns")
-df["status"] = "Failed"
-df.loc[df["averageScore"] >= 190, "status"] = "Passed"
+df["totalScore"] = df[["scoreEnglish", "scoreMath", "scoreIndo"]].sum(axis="columns")
+# df["status"] = "Failed"
+df["averageScore"] = df["totalScore"] / len(df["scoreEnglish"])
+df.loc =
+
 
 print(df)
