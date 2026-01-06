@@ -8,9 +8,9 @@ data = {
 }
 df = pd.DataFrame(data)
 df["totalScore"] = df[["scoreEnglish", "scoreMath", "scoreIndo"]].sum(axis="columns")
-# df["status"] = "Failed"
+df["status"] = "Failed"
 df["averageScore"] = df["totalScore"] / len(df["scoreEnglish"])
-df.loc =
+df.loc 
 
 
 print(df)
