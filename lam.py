@@ -19,7 +19,6 @@ df.loc[df["averageScore"] >= 70, "status"] = "Passed"
 
 #Total amount of people that passed and failed
 df["status"].value_counts()
-#++++++------
 passed_stundets = df.loc[df["status"] == "Passed"]
 failed_students = df.loc[df["status"] != "Passed"]
 
