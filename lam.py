@@ -26,5 +26,9 @@ failed_students = df.loc[df["status"] != "Passed"]
 top_student = df.loc[df["averageScore"] == df["averageScore"].max()]
 lowest_student = df.loc[df["averageScore"] == df["averageScore"].min()]
 
+df_ascend = df.sort_values(by="averageScore", ascending=False)
+#Top 3 student
+df_largest = df.nlargest(3, "averageScore")
 
-print(failed_students)
+
+print(df_largest)
