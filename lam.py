@@ -18,17 +18,24 @@ df["status"] = "Failed"
 df.loc[df["averageScore"] >= 70, "status"] = "Passed"
 
 #Total amount of people that passed and failed
-df["status"].value_counts()
-passed_stundets = df.loc[df["status"] == "Passed"]
+status_count = df["status"].value_counts()
+passed_students = df.loc[df["status"] == "Passed"]
 failed_students = df.loc[df["status"] != "Passed"]
 
 #Top student
 top_student = df.loc[df["averageScore"] == df["averageScore"].max()]
 lowest_student = df.loc[df["averageScore"] == df["averageScore"].min()]
 
-df_ascend = df.sort_values(by="averageScore", ascending=False)
 #Top 3 student
 df_largest = df.nlargest(3, "averageScore")
+#rank
+df["rank"] = df["averageScore"].rank(method="dense", ascending=False)
 
+#Passed subjects
+math_passed = df.loc[(df["status"] == "Passed") & (df["scoreMath"] >= 80)]
+english_passed = df.loc[(df["status"] == "Passed") & (df["scoreEnglish"] >= 80)]
+indo_passed = df.loc[(df["status"] == "Passed") & (df["scoreIndo"] >= 80)]
 
-print(df_largest)
+passed = df.loc[(df.filter(regex="^score") >= 70).all(axis=1)]
+
+print(passed)
