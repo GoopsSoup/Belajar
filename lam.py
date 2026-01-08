@@ -38,4 +38,4 @@ indo_passed = df.loc[(df["status"] == "Passed") & (df["scoreIndo"] >= 80)]
 
 passed = df.loc[(df.filter(regex="^score") >= 70).all(axis=1)]
 
-print(passed)
+print(df)
