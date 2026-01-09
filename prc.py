@@ -14,8 +14,16 @@ df.loc[(df["daily_cust"] >= 140), "crowd"] = "Crowded"
 
 # V Customer in total V
 total_cust = df["daily_cust"].sum(axis=0)
+status = df["crowd"].value_counts()
+crowded = df.loc[df["crowd"] == "Crowded"]
+quiet = df.loc[df["crowd"] == "Quiet"]
 
-# Store in order of customer ??
+# Top stores
+recc_store = df.loc[df["daily_cust"] == df["daily_cust"].max()]
+df["rank"] = df["daily_cust"].rank(method="dense", ascending=False)
+
+# Store in order of customer
 leaderboard = df.nlargest(len(df["store"]), "daily_cust")
 
-print(leaderboard)
+
+print(df.loc[df["item"] == "Laptop"])
