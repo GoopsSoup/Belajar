@@ -7,3 +7,4 @@ df = pd.DataFrame({
 
 
 print(df[["math", "english"]].ge(70).all(axis=1))
+# anjat
